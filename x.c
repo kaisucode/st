@@ -70,6 +70,7 @@ static void selpaste(const Arg *);
 static void zoom(const Arg *);
 static void zoomabs(const Arg *);
 static void zoomreset(const Arg *);
+static void opennewwindow(const Arg *);
 
 /* config.h for applying patches and the configuration. */
 #include "config.h"
@@ -322,6 +323,32 @@ zoomreset(const Arg *arg)
 		larg.f = defaultfontsize;
 		zoomabs(&larg);
 	}
+}
+
+void
+opennewwindow(const Arg *dummy)
+{
+
+	system("st sh -c 'cd $PWD; zsh' & disown");
+}
+
+// inserts into subject[] at position pos
+void append(char subject[], const char insert[], int pos) {
+    char buf[100] = {}; // 100 so that it's big enough. fill with zeros
+    // or you could use malloc() to allocate sufficient space
+    // e.g. char *buf = (char*)malloc(strlen(subject) + strlen(insert) + 2);
+    // to fill with zeros: memset(buf, 0, 100);
+
+    strncpy(buf, subject, pos); // copy at most first pos characters
+    int len = strlen(buf);
+    strcpy(buf+len, insert); // copy all of insert[] at the end
+    len += strlen(insert);  // increase the length by length of insert[]
+    strcpy(buf+len, subject+pos); // copy the rest
+
+    strcpy(subject, buf);   // copy it back to subject
+    // Note that subject[] must be big enough, or else segfault.
+    // deallocate buf[] here, if used malloc()
+    // e.g. free(buf);
 }
 
 int

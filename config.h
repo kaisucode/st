@@ -212,6 +212,7 @@ static Shortcut shortcuts[] = {
 	{ MODKEY|ShiftMask,     XK_J,           zoom,           {.f = -1} },
 	{ MODKEY|ShiftMask,     XK_U,           zoom,           {.f = +2} },
 	{ MODKEY|ShiftMask,     XK_D,           zoom,           {.f = -2} },
+	{ ControlMask|ShiftMask,               XK_N,           opennewwindow,       {.i =  0} },
     	{ MODKEY,		XK_l,		externalpipe,	{ .v = openurlcmd } },
 };
 
