@@ -1,7 +1,7 @@
 
 # Kaisu's changes to Luke Smiths' build of st
 
-## Unique features (using dmenu)
+## Additional features
 
 + Applied Cursor Blinking Patch
 + PyWal support
